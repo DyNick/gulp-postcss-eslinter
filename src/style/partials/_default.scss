@@ -1,0 +1,148 @@
+
+
+//variable for base font
+$base-font-size :16px;
+
+/*
+	Width variables
+*/
+$container-width : 1200px;
+$laptop-width :1280px;
+$desktop-width : 1024px;
+$tablet-width :768px;
+$mobile-big-width : 480px;
+$mobile-small-width : 320px;
+
+
+$small-media : 'screen and (max-width: $mobile-small-width)';
+$medium-media : 'screen and (max-width: $mobile-big-width)';
+$tablet-media : 'screen and (max-width: $tablet-width)';
+$desktop-media : 'screen and (max-width: $desktop-width)';
+$container-media : 'screen and (max-width: $container-width)';
+
+$color-red: #FF0000;
+$color-green: #00FF00;
+$color-blue: #0000FF;
+
+@mixin respond-to($media) {
+	@media only screen and #{$media} {
+		@content;
+	}
+}
+
+
+@mixin flex-mixin($justify, $align, $flow){
+	display: flex;
+	justify-content: $justify;
+	align-items:$align;
+	flex-flow: $flow;
+}
+
+@mixin button-mixin($bg-color, $color, $paddings) {
+	padding: $paddings;
+	background-color: $bg-color;
+	border: 0;
+	outline: none;
+	font-weight: 600;
+	color: $color;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+layout-container()
+{
+	max-width: $container-width;
+	padding: 0 20px;
+	margin: 0 auto;
+	box-sizing:border-box;
+}
+/*=================default===============*/
+body{
+	font-family:sans-serif;
+}
+a{
+	text-decoration:none;
+}
+h1{
+	font-size:40px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+h2{
+	font-size:30px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+h3{
+	font-size:25px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.clearfix{
+	&:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+.btn-main{
+	padding: 20px 40px;
+	background: none;
+	border: none;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 3px;
+	cursor: pointer;
+	&:after, &:before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		border: 2px solid #000;
+		transition: transform .2s;
+	}
+	&:after{
+		transform: translate(3px, 3px);
+	}
+	&:before{
+		transform: translate(-3px, -3px);
+	}
+	&:hover{
+		&:after, &:before{
+			transform: translate(0);
+		}
+	}
+
+}
+.container{
+	width: $container-width;
+	margin: 0 auto;
+	&-inner{
+		display: flex;
+		box-sizing: border-box;
+		flex-wrap: wrap;
+		width: 100%;
+		margin-right: -15px;
+		margin-left: -15px;
+	}
+}
+
+.column{
+	position: relative;
+	padding:0 15px;
+	box-sizing: border-box;
+	&--two-items{
+		width: 50%;
+
+	}
+	&--tree-items{
+		width: 33.333333333333%;
+	}
+	&--four-items{
+		width: 25%;
+	}
+}
